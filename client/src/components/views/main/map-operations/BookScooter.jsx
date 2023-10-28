@@ -35,11 +35,11 @@ const BookScooter = ({ newStationCoords, setOpenAddStationModal, setInAddNewStat
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <h2 style={{ color: "black" }}>Available Scooters: </h2>
                 {
-                    station.scooters.filter(scooter => scooter.reservedUserId === null).map(s => {
+                    station.scooters.filter(scooter => scooter.reservedUserId === null).map((s, index) => {
                         return (
-                            <button className="btn" onClick={() => submit(s)}>
-                                {s._id} <br />
-                                {s.batteryLevel}
+                            <button className="btn" onClick={() => submit(s)} key={index}>
+                                scooter #{index + 1} <br />
+                                baterry: {s.batteryLevel}
                             </button>
                         )
                     })

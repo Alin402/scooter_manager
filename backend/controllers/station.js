@@ -54,13 +54,14 @@ const reserveStation = asyncHandler(async (req, res) => {
         if (!station) {
             return res.status(404).json({ errors: [{ msg: "Station not found" }] });
         }
-        let scooter = station.scooters.filter(scooter => scooter.id === scooterId);
-        scooter.reservedUserId = req.user._id;
-        let scooterIndex = station.scooters.indexOf(scooter);
-        if (scooterIndex !== -1) {
-            station.scooters.splice(scooterIndex, 1);
-        }
-        station.scooters.push(scooter);
+        station.scooters.map(scooter => {
+            if (scooter.id === scooterId) {
+                return {
+                    ...scooter,
+                    reservedUserId: req.user._id
+                }
+            }
+        })
         await station.save();
         return res.status(200).json({ user: req.user })
     } catch (error) {

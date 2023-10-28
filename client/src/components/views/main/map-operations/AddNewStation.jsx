@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addStation } from "../../../../actions/station";
 
-const AddNewStation = ({ newStationCoords, setOpenAddStationModal, setInAddNewStationMode }) => {
+const AddNewStation = ({ newStationCoords, setOpenAddStationModal, setInAddNewStationMode, setRefresh }) => {
     const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
@@ -18,8 +18,9 @@ const AddNewStation = ({ newStationCoords, setOpenAddStationModal, setInAddNewSt
     const submit = () => {
         console.log(formData);
         dispatch(addStation(formData));
-        // setOpenAddStationModal(false);
-        // setInAddNewStationMode(false);
+        setOpenAddStationModal(false);
+        setInAddNewStationMode(false);
+        setRefresh(true);
     }
     return (
         <div>

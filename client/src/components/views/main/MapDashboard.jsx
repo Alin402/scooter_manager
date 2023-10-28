@@ -15,7 +15,8 @@ const MapDashboard = ({ inAddNewStationMode,
     setSelectedStation,
     openBookModal,
     setOpenBookModal,
-    handleCloseBookModal
+    handleCloseBookModal,
+    setRefresh
 }) => {
     const user = useSelector(state => state.user);
 
@@ -58,6 +59,7 @@ const MapDashboard = ({ inAddNewStationMode,
                     newStationCoords={newStationCoords}
                     setOpenAddStationModal={setOpenAddStationModal}
                     setInAddNewStationMode={setInAddNewStationMode}
+                    setRefresh={setRefresh}
                 />
             </Modal>
 

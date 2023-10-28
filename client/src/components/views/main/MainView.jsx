@@ -13,9 +13,9 @@ const LandingView = () => {
     const [inAddNewStationMode, setInAddNewStationMode] = useState(false);
     const [selectedStation, setSelectedStation] = useState(false);
     const [openBookModal, setOpenBookModal] = useState(false);
+    const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
-        console.log("intra")
         dispatch(getStations());
     }, [])
 
@@ -48,6 +48,7 @@ const LandingView = () => {
                     openBookModal={openBookModal}
                     setOpenBookModal={setOpenBookModal}
                     handleCloseBookModal={handleCloseBookModal}
+                    setRefresh={setRefresh}
                 />
                 <Map
                     newStationCoords={newStationCoords}
