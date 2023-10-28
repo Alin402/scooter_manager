@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addStation } from "../../../../actions/station";
+import { addAlert } from "../../../../actions/alert";
 import axios from "axios";
 
 const BookScooter = ({ newStationCoords, setOpenAddStationModal, setInAddNewStationMode, station, setOpenBookModal }) => {
@@ -26,6 +27,7 @@ const BookScooter = ({ newStationCoords, setOpenAddStationModal, setInAddNewStat
                 "token": localStorage.getItem("token")
             }
         })
+        dispatch(addAlert({ msg: "Scooter booked successfuly", type: "success" }))
         setOpenBookModal(false)
     }
     return (

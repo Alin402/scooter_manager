@@ -58,9 +58,10 @@ const reserveStation = asyncHandler(async (req, res) => {
             if (scooter.id === scooterId) {
                 return {
                     ...scooter,
-                    reservedUserId: req.user._id
+                    reservedUserId: 12
                 }
             }
+            return scooter;
         })
         await station.save();
         return res.status(200).json({ user: req.user })
